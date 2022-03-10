@@ -1,0 +1,17 @@
+name: Punch In
+
+on:
+  schedule:
+    - cron: 55 13 * * *
+  workflow_dispatch:
+
+jobs:
+  punch_in:
+    runs-on: ubuntu-20.04
+    env:
+      ACCOUNTS: ${{ secrets.ACCOUNTS }}
+    steps:
+      - name: "checkout"
+        uses: actions/checkout@v1
+      - name: "Punch in"
+        run: ./punch_in
